@@ -8,24 +8,64 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return numberoOfRows
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return numberoOfColumns
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MatrixCollectionViewCell", for: indexPath) as! MatrixCollectionViewCell
+        cell.valueLabel.text = "\(matrix[indexPath.item][indexPath.section])"
+        
+        return cell
+    }
+    
+    @IBOutlet weak var numberOfRowsTextField: UITextField!
+    @IBOutlet weak var numberOfColumnsTextField: UITextField!
+    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var resultCollectionView: UICollectionView!
+    
+    var matrix: [[Int]] = [[Int]]()
+    
+    var numberoOfRows: Int = 0
+    var numberoOfColumns: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        resultCollectionView.delegate = self
+        resultCollectionView.dataSource = self
+        resultCollectionView.register(UINib(nibName: "MatrixCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MatrixCollectionViewCell")
         // Do any additional setup after loading the view, typically from a nib.
-        createAll(1, 0)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    @IBAction func doCalculation(_ sender: Any) {
+        guard let numberOfRowsText = numberOfRowsTextField.text, let numberOfRows = Int(numberOfRowsText) else {
+            return
+        }
+        guard let numberOfColumnsText = numberOfColumnsTextField.text, let numberOfColumns = Int(numberOfColumnsText) else {
+            return
+        }
+        calculate(numberOfRows, numberOfColumns)
+    }
     
-    func createAll(_ columns: Int,_ rows: Int) {
-        var matrix: Array = Array(repeating: Array(repeating: 0, count: columns), count: rows)
+    func calculate(_ columns: Int,_ rows: Int) {
+        errorLabel.text = ""
+
+        numberoOfColumns = columns
+        numberoOfRows = rows
+        view.endEditing(true)
+        matrix = Array(repeating: Array(repeating: 0, count: columns), count: rows)
         
         if columns == 0 || rows == 0 {
-            print("Rows and columns must be bigger than 0")
+            errorLabel.text = "Rows and columns must be bigger than 0"
         } else if (columns == 1 && rows == 1) {
             matrix[0][0] = 1
         } else if rows == 1  {
@@ -52,7 +92,7 @@ class ViewController: UIViewController {
                 for column in 0...columns - 2 {
                     let value = row + column + 1
                     matrix[row][column] = value
-                    rSum[row] += value
+                    rSum[column] += value
                     cSum += value
                 }
                 matrix[row][columns - 1] = cSum
@@ -61,7 +101,7 @@ class ViewController: UIViewController {
             matrix[rows - 1] = rSum
             
         }
-        print("\(matrix)")
+        resultCollectionView.reloadData()
     }
 }
 
