@@ -18,14 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of rows" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lK1-Jf-csx">
-                                <rect key="frame" x="126" y="28" width="123" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of columns" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lK1-Jf-csx">
+                                <rect key="frame" x="112" y="28" width="151" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of columns" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLE-HT-yFD">
-                                <rect key="frame" x="112" y="103" width="151" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of rows" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLE-HT-yFD">
+                                <rect key="frame" x="126" y="103" width="123" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -61,18 +61,18 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UsW-lo-PmS">
                                 <rect key="frame" x="8" y="241" width="359" height="418"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lGn-xi-ysM">
-                                    <size key="itemSize" width="50" height="50"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="5" id="lGn-xi-ysM">
+                                    <size key="itemSize" width="40" height="40"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MatrixCollectionViewCell" id="PzL-rj-xBK" customClass="MatrixCollectionViewCell" customModule="_vilTechTestiOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </view>
                                     </collectionViewCell>
@@ -103,8 +103,8 @@
                     </view>
                     <connections>
                         <outlet property="errorLabel" destination="SBa-Vu-RCo" id="KVM-Ls-jcb"/>
-                        <outlet property="numberOfColumnsTextField" destination="omb-nI-M4o" id="pO7-gL-B1e"/>
-                        <outlet property="numberOfRowsTextField" destination="P19-gD-oPf" id="ju3-Bk-ZAK"/>
+                        <outlet property="numberOfColumnsTextField" destination="P19-gD-oPf" id="5jk-bK-0bW"/>
+                        <outlet property="numberOfRowsTextField" destination="omb-nI-M4o" id="VLr-jX-KH9"/>
                         <outlet property="resultCollectionView" destination="UsW-lo-PmS" id="N9C-k7-ESO"/>
                     </connections>
                 </viewController>

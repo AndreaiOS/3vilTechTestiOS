@@ -88,9 +88,9 @@
 				A5EE162A20A47C2A00FE6556 /* Info.plist */,
 				A5EE162720A47C2A00FE6556 /* LaunchScreen.storyboard */,
 				A5EE162220A47C2800FE6556 /* Main.storyboard */,
+				A5CF7B3420A4A52600B7CDE0 /* MatrixCalculator.swift */,
 				A5EE162020A47C2800FE6556 /* MatrixCalculatorViewController.swift */,
 				A5CF7B3020A4948D00B7CDE0 /* MatrixCollectionViewCell.swift */,
-				A5CF7B3420A4A52600B7CDE0 /* MatrixCalculator.swift */,
 				A5CF7B3120A4948D00B7CDE0 /* MatrixCollectionViewCell.xib */,
 			);
 			path = 3vilTechTestiOS;

@@ -8,8 +8,7 @@
 
 import Foundation
 
-typealias CompletionHandler = (_ success: Bool, _ error: String?) -> Void
-
+typealias CompletionHandler = (_ result: [[Int]], _ error: String?) -> Void
 
 class MatrixCalculator {
     class func calculate(_ columns: Int,_ rows: Int, completion: CompletionHandler) {
@@ -17,8 +16,9 @@ class MatrixCalculator {
         
         matrix = Array(repeating: Array(repeating: 0, count: columns), count: rows)
         
-        if columns == 0 || rows == 0 {
-            completion(false, "Rows and columns must be bigger than 0")
+        if columns < 1 || rows < 1 {
+            completion(matrix, "Rows and columns must be bigger than 0")
+            return
         } else if (columns == 1 && rows == 1) {
             matrix[0][0] = 1
         } else if rows == 1  {
@@ -52,8 +52,7 @@ class MatrixCalculator {
             }
             rSum[columns - 1] = rSum.reduce(0, +)
             matrix[rows - 1] = rSum
-            
         }
-        completion(true, nil)
+        completion(matrix, nil)
     }
 }

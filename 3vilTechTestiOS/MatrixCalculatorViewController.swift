@@ -24,73 +24,37 @@ class MatrixCalculatorViewController: UIViewController  {
         resultCollectionView.delegate = self
         resultCollectionView.dataSource = self
         resultCollectionView.register(UINib(nibName: "MatrixCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MatrixCollectionViewCell")
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
     @IBAction func doCalculation(_ sender: Any) {
         view.endEditing(true)
 
-        guard let numberOfRowsText = numberOfRowsTextField.text, numberOfRows = Int(numberOfRowsText) else {
+        guard let numberOfRowsText = numberOfRowsTextField.text, let numberOfRows = Int(numberOfRowsText) else {
             return
         }
-        guard let numberOfColumnsText = numberOfColumnsTextField.text, numberOfColumns = Int(numberOfColumnsText) else {
+        guard let numberOfColumnsText = numberOfColumnsTextField.text, let numberOfColumns = Int(numberOfColumnsText) else {
             return
         }
         calculate(numberOfRows, numberOfColumns)
     }
     
     func calculate(_ columns: Int,_ rows: Int) {
-        errorLabel.text = ""
-
-        view.endEditing(true)
-        matrix = Array(repeating: Array(repeating: 0, count: columns), count: rows)
+        numberoOfRows = rows
+        numberoOfColumns = columns
         
-        if columns == 0 || rows == 0 {
-            errorLabel.text = "Rows and columns must be bigger than 0"
-        } else if (columns == 1 && rows == 1) {
-            matrix[0][0] = 1
-        } else if rows == 1  {
-            var cSum: Int = 0
-            for column in 0...columns - 2 {
-                let value = column + 1
-                matrix[0][column] = value
-                cSum += value
+        MatrixCalculator.calculate(columns, rows) { (result, error) in
+            if let error = error {
+                errorLabel.text = error
+            } else {
+                errorLabel.text = ""
+                matrix = result
+                resultCollectionView.reloadData()
             }
-            matrix[0][columns - 1] = cSum
-        } else if columns == 1{
-            var rSum: Int = 0
-            for row in 0...rows - 2 {
-                let value = row + 1
-                matrix[row][0] = value
-                rSum += value
-            }
-            matrix[rows - 1][0] = rSum
-        } else {
-            var rSum = Array(repeating: 0, count: columns)
-            
-            for row in 0...rows - 2 {
-                var cSum: Int = 0
-                for column in 0...columns - 2 {
-                    let value = row + column + 1
-                    matrix[row][column] = value
-                    rSum[column] += value
-                    cSum += value
-                }
-                matrix[row][columns - 1] = cSum
-            }
-            rSum[columns - 1] = rSum.reduce(0, +)
-            matrix[rows - 1] = rSum
-            
         }
-        resultCollectionView.reloadData()
     }
 }
 
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension MatrixCalculatorViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return numberoOfRows
     }
