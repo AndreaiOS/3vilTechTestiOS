@@ -11,6 +11,9 @@ import Foundation
 typealias CompletionHandler = (_ result: [[Int]], _ error: String?) -> Void
 
 class MatrixCalculator {
+    // Some space for refactoring here
+    // repetitive code
+    
     class func calculate(_ columns: Int,_ rows: Int, completion: CompletionHandler) {
         var matrix: [[Int]] = [[Int]]()
         

@@ -11,26 +11,45 @@ import XCTest
 
 class _vilTechTestiOSTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testValuesZero() {
+        MatrixCalculator.calculate(0, 0) { (matrix, error) in
+            XCTAssertNotNil(error)
         }
     }
     
+    func testColumnsValueZero() {
+        MatrixCalculator.calculate(0, 1) { (matrix, error) in
+            XCTAssertNotNil(error)
+        }
+    }
+    
+    func testRowsValueZero() {
+        MatrixCalculator.calculate(1, 0) { (matrix, error) in
+            XCTAssertNotNil(error)
+        }
+    }
+    
+    func testValuesOne() {
+        MatrixCalculator.calculate(1, 1) { (matrix, error) in
+            XCTAssertEqual(matrix, [[1]])
+        }
+    }
+    
+    func testValuesFive() {
+        MatrixCalculator.calculate(5, 5) { (matrix, error) in
+            XCTAssertEqual(matrix, [[1, 2, 3, 4, 10], [2, 3, 4, 5, 14], [3, 4, 5, 6, 18], [4, 5, 6, 7, 22], [10, 14, 18, 22, 64]])
+        }
+    }
+    
+    func testValuesSevenFive() {
+        MatrixCalculator.calculate(7, 5) { (matrix, error) in
+            XCTAssertEqual(matrix, [[1, 2, 3, 4, 5, 6, 21], [2, 3, 4, 5, 6, 7, 27], [3, 4, 5, 6, 7, 8, 33], [4, 5, 6, 7, 8, 9, 39], [10, 14, 18, 22, 26, 30, 120]])
+        }
+    }
+    
+    func testValuesSixFour() {
+        MatrixCalculator.calculate(6, 4) { (matrix, error) in
+            XCTAssertEqual(matrix, [[1, 2, 3, 4, 5, 15], [2, 3, 4, 5, 6, 20], [3, 4, 5, 6, 7, 25], [6, 9, 12, 15, 18, 60]])
+        }
+    }
 }
