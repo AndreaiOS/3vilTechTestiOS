@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		A5CF7B3220A4948D00B7CDE0 /* MatrixCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CF7B3020A4948D00B7CDE0 /* MatrixCollectionViewCell.swift */; };
 		A5CF7B3320A4948D00B7CDE0 /* MatrixCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5CF7B3120A4948D00B7CDE0 /* MatrixCollectionViewCell.xib */; };
+		A5CF7B3520A4A52600B7CDE0 /* MatrixCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CF7B3420A4A52600B7CDE0 /* MatrixCalculator.swift */; };
 		A5EE161F20A47C2800FE6556 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EE161E20A47C2800FE6556 /* AppDelegate.swift */; };
-		A5EE162120A47C2800FE6556 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EE162020A47C2800FE6556 /* ViewController.swift */; };
+		A5EE162120A47C2800FE6556 /* MatrixCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EE162020A47C2800FE6556 /* MatrixCalculatorViewController.swift */; };
 		A5EE162420A47C2800FE6556 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5EE162220A47C2800FE6556 /* Main.storyboard */; };
 		A5EE162620A47C2A00FE6556 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5EE162520A47C2A00FE6556 /* Assets.xcassets */; };
 		A5EE162920A47C2A00FE6556 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5EE162720A47C2A00FE6556 /* LaunchScreen.storyboard */; };
@@ -30,9 +31,10 @@
 /* Begin PBXFileReference section */
 		A5CF7B3020A4948D00B7CDE0 /* MatrixCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5CF7B3120A4948D00B7CDE0 /* MatrixCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatrixCollectionViewCell.xib; sourceTree = "<group>"; };
+		A5CF7B3420A4A52600B7CDE0 /* MatrixCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixCalculator.swift; sourceTree = "<group>"; };
 		A5EE161B20A47C2800FE6556 /* 3vilTechTestiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 3vilTechTestiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5EE161E20A47C2800FE6556 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A5EE162020A47C2800FE6556 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A5EE162020A47C2800FE6556 /* MatrixCalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixCalculatorViewController.swift; sourceTree = "<group>"; };
 		A5EE162320A47C2800FE6556 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A5EE162520A47C2A00FE6556 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5EE162820A47C2A00FE6556 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -82,13 +84,14 @@
 			isa = PBXGroup;
 			children = (
 				A5EE161E20A47C2800FE6556 /* AppDelegate.swift */,
-				A5EE162020A47C2800FE6556 /* ViewController.swift */,
-				A5EE162220A47C2800FE6556 /* Main.storyboard */,
-				A5CF7B3020A4948D00B7CDE0 /* MatrixCollectionViewCell.swift */,
-				A5CF7B3120A4948D00B7CDE0 /* MatrixCollectionViewCell.xib */,
 				A5EE162520A47C2A00FE6556 /* Assets.xcassets */,
-				A5EE162720A47C2A00FE6556 /* LaunchScreen.storyboard */,
 				A5EE162A20A47C2A00FE6556 /* Info.plist */,
+				A5EE162720A47C2A00FE6556 /* LaunchScreen.storyboard */,
+				A5EE162220A47C2800FE6556 /* Main.storyboard */,
+				A5EE162020A47C2800FE6556 /* MatrixCalculatorViewController.swift */,
+				A5CF7B3020A4948D00B7CDE0 /* MatrixCollectionViewCell.swift */,
+				A5CF7B3420A4A52600B7CDE0 /* MatrixCalculator.swift */,
+				A5CF7B3120A4948D00B7CDE0 /* MatrixCollectionViewCell.xib */,
 			);
 			path = 3vilTechTestiOS;
 			sourceTree = "<group>";
@@ -204,8 +207,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5CF7B3520A4A52600B7CDE0 /* MatrixCalculator.swift in Sources */,
 				A5CF7B3220A4948D00B7CDE0 /* MatrixCollectionViewCell.swift in Sources */,
-				A5EE162120A47C2800FE6556 /* ViewController.swift in Sources */,
+				A5EE162120A47C2800FE6556 /* MatrixCalculatorViewController.swift in Sources */,
 				A5EE161F20A47C2800FE6556 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MatrixCalculatorViewController.swift
 //  3vilTechTestiOS
 //
 //  Created by Andrea Murru on 10/05/2018.
@@ -8,22 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return numberoOfRows
-    }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return numberoOfColumns
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MatrixCollectionViewCell", for: indexPath) as! MatrixCollectionViewCell
-        cell.valueLabel.text = "\(matrix[indexPath.item][indexPath.section])"
-        
-        return cell
-    }
-    
+class MatrixCalculatorViewController: UIViewController  {
     @IBOutlet weak var numberOfRowsTextField: UITextField!
     @IBOutlet weak var numberOfColumnsTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
@@ -47,10 +32,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // Dispose of any resources that can be recreated.
     }
     @IBAction func doCalculation(_ sender: Any) {
-        guard let numberOfRowsText = numberOfRowsTextField.text, let numberOfRows = Int(numberOfRowsText) else {
+        view.endEditing(true)
+
+        guard let numberOfRowsText = numberOfRowsTextField.text, numberOfRows = Int(numberOfRowsText) else {
             return
         }
-        guard let numberOfColumnsText = numberOfColumnsTextField.text, let numberOfColumns = Int(numberOfColumnsText) else {
+        guard let numberOfColumnsText = numberOfColumnsTextField.text, numberOfColumns = Int(numberOfColumnsText) else {
             return
         }
         calculate(numberOfRows, numberOfColumns)
@@ -59,8 +46,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func calculate(_ columns: Int,_ rows: Int) {
         errorLabel.text = ""
 
-        numberoOfColumns = columns
-        numberoOfRows = rows
         view.endEditing(true)
         matrix = Array(repeating: Array(repeating: 0, count: columns), count: rows)
         
@@ -105,3 +90,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
 }
 
+extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return numberoOfRows
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return numberoOfColumns
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MatrixCollectionViewCell", for: indexPath) as! MatrixCollectionViewCell
+        cell.valueLabel.text = "\(matrix[indexPath.item][indexPath.section])"
+        
+        return cell
+    }
+}
